@@ -6,6 +6,7 @@ class TasksController < ApplicationController
   end
   
   def show
+    @task = @user.tasks.find(params[:id])
   end
   
   def new
@@ -20,6 +21,27 @@ class TasksController < ApplicationController
     else
       render :new
     end
+  end
+  
+  def edit
+    @task = @user.tasks.find(params[:id])
+  end
+  
+  def update
+    @task = @user.tasks.find(params[:id])
+    if @task.update_attributes(task_params)
+      flash[:success] = "タスクを更新しました。"
+      redirect_to user_task_path(@user,@task)
+    else
+      render :edit      
+    end
+  end
+  
+  def destroy
+    @task = @user.tasks.find(params[:id])
+    @task.destroy
+    flash[:success] = "#{@task.name}は削除しました。"
+    redirect_to  user_tasks_path(@user,@task)
   end
   
   private

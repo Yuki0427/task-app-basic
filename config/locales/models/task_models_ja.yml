@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      task: タスク
+    attributes:
+        task:
+          id: ID
+          name: 名称
+          email: メールアドレス
+          password: パスワード
+          password_confirmation: パスワード再入力
+          title: タイトル
+          description: 詳細
+          created_at: 作成日
+          updated_at: 更新日
