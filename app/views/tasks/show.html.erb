@@ -5,23 +5,23 @@
       <table class="table table-bordered" id="table-task">
         <tbody>
           <tr>
-            <th class="active col-md-2">ID</th>
+            <th class="active col-md-2"><%= Task.human_attribute_name :id %></th>
             <td><%= @task.id %></td>
           </tr>
           <tr>
-            <th class="active">名称</th>
+            <th class="active"><%= Task.human_attribute_name :name %></th>
             <td><%= @task.name %></td>
           </tr>
           <tr>
-            <th class="active">詳細</th>
+            <th class="active"><%= Task.human_attribute_name :description %></th>
             <td><%= text_url_to_link(h(@task.description)).html_safe %></td>
           </tr>
           <tr>
-            <th class="active">作成日</th>
+            <th class="active"><%= Task.human_attribute_name :created_at %></th>
             <td><%= @task.created_at %></td>
           </tr>
           <tr>
-            <th class="active">更新日</th>
+            <th class="active"><%= Task.human_attribute_name :updated_at %></th>
             <td><%= @task.updated_at %></td>
           </tr>
         </tbody>
