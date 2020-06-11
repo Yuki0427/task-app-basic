@@ -1,5 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_user
+  before_action :logged_in_user
+  before_action :correct_user
+  
   
   def index
     @task = @user.tasks.all
@@ -52,5 +55,16 @@ class TasksController < ApplicationController
     
     def task_params
       params.require(:task).permit(:name,:description,:user_id)
+    end
+    
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "ログインしてください。"
+        redirect_to login_url
+      end
+    end
+    
+    def correct_user
+      redirect_to(root_url) unless current_user?(@user)
     end
 end
